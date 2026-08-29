@@ -37,6 +37,9 @@ button {
   font: inherit;
 }
 
+/* ============================================================
+   NOISE OVERLAY
+============================================================ */
 .noise {
   position: fixed;
   inset: 0;
@@ -46,6 +49,9 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
+/* ============================================================
+   SUBTLE GRID BACKGROUND (hero)
+============================================================ */
 .grid-background {
   position: absolute;
   inset: 0;
@@ -55,4 +61,305 @@ button {
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+/* ============================================================
+   SCANLINE OVERLAY (Security Lab)
+============================================================ */
+.scanline-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 60, 60, 0.012) 2px,
+    rgba(255, 60, 60, 0.012) 4px
+  );
+  z-index: 1;
+}
+
+.scanline-sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 60, 60, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 100% 30%;
+  animation: scanSweep 8s linear infinite;
+}
+
+@keyframes scanSweep {
+  0% { background-position: 0 -30%; }
+  100% { background-position: 0 130%; }
+}
+
+/* ============================================================
+   BLUEPRINT GRID (Work section)
+============================================================ */
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(184, 255, 92, 0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 70%);
+}
+
+/* ============================================================
+   MARQUEE / INFINITE TICKER
+============================================================ */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-left {
+  animation: marqueeLeft 35s linear infinite;
+}
+
+.marquee-right {
+  animation: marqueeRight 35s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   GRADIENT TEXT
+============================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   GLASS MORPHISM
+============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   CONNECTOR LINE DRAW ANIMATION (Philosophy)
+============================================================ */
+@keyframes drawLine {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.connector-line {
+  transform-origin: top;
+  animation: drawLine 0.6s ease-out forwards;
+}
+
+/* ============================================================
+   TERMINAL WINDOW HEADER (Security Lab)
+============================================================ */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ============================================================
+   ANIMATED GRADIENT BORDER (Footer)
+============================================================ */
+@keyframes gradientSlide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.animated-border-top {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent) 25%,
+    transparent 50%,
+    var(--accent) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: gradientSlide 4s linear infinite;
+}
+
+/* ============================================================
+   PULSING DOT (Security severity)
+============================================================ */
+@keyframes severityPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+.severity-pulse {
+  animation: severityPulse 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   RADIAL GLOW (Contact)
+============================================================ */
+.radial-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(184, 255, 92, 0.08) 0%,
+    rgba(184, 255, 92, 0.02) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* ============================================================
+   FLOATING PARTICLES (Contact)
+============================================================ */
+@keyframes floatUp {
+  0% { transform: translateY(100%) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatUp var(--duration, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  left: var(--x, 50%);
+  bottom: 0;
+  opacity: 0;
+}
+
+/* ============================================================
+   BLINK CURSOR
+============================================================ */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* ============================================================
+   WATERMARK NUMBER
+============================================================ */
+.watermark-number {
+  position: absolute;
+  font-size: clamp(8rem, 15vw, 14rem);
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.018);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+}
+
+/* ============================================================
+   SHIMMER EFFECT
+============================================================ */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-hover:hover {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(184, 255, 92, 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out;
+}
+
+/* ============================================================
+   CODE BLOCKS
+============================================================ */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+pre::-webkit-scrollbar {
+  height: 4px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   GLOBAL SCROLLBAR
+============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020303;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }

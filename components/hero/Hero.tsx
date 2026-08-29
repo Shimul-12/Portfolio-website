@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import HeroBackground from "./HeroBackground";
 import NetworkOverlay from "./NetworkOverlay";
-import SystemPanel from "./SystemPanel";
 
 const systems = [
   {
@@ -12,6 +11,7 @@ const systems = [
     description: "Decentralized Stablecoin",
     stack: "Solidity · Foundry · Smart Contracts",
     status: "LIVE",
+    href: "#work",
   },
   {
     id: "02",
@@ -19,6 +19,7 @@ const systems = [
     description: "On-chain Governance",
     stack: "Solidity · Governance · Web3",
     status: "LIVE",
+    href: "#work",
   },
   {
     id: "03",
@@ -26,6 +27,7 @@ const systems = [
     description: "Chainlink VRF",
     stack: "Solidity · Chainlink · Foundry",
     status: "LIVE",
+    href: "#work",
   },
   {
     id: "04",
@@ -33,6 +35,7 @@ const systems = [
     description: "Decentralized Identity",
     stack: "Web3 · Backend · Smart Contracts",
     status: "LIVE",
+    href: "#work",
   },
   {
     id: "05",
@@ -40,6 +43,7 @@ const systems = [
     description: "Audit / Research / Writeups",
     stack: "Solidity · Fuzzing · Security",
     status: "ACTIVE",
+    href: "#security",
   },
 ];
 
@@ -51,48 +55,8 @@ export default function Hero() {
       <HeroBackground />
       <NetworkOverlay />
 
-      {/* RIGHT SYSTEM PANEL */}
-      <SystemPanel />
-
-      {/* LEFT NAVIGATION RAIL */}
-      <aside className="absolute bottom-[145px] left-6 top-[105px] z-30 hidden w-10 flex-col items-center lg:flex">
-
-        <div className="flex h-10 w-10 items-center justify-center border border-[var(--accent)]/70">
-          <div className="h-2.5 w-2.5 rotate-45 border border-[var(--accent)]" />
-        </div>
-
-        <span className="mt-5 font-mono text-[12px] font-medium text-[var(--accent)]">
-          01
-        </span>
-
-        <span className="my-3 h-px w-5 bg-white/20" />
-
-        <span className="font-mono text-[12px] text-white/30">
-          07
-        </span>
-
-        <div className="mt-10 flex flex-1 flex-col items-center">
-
-          <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_12px_rgba(184,255,92,0.55)]" />
-
-          <div className="my-3 w-px flex-1 bg-gradient-to-b from-[var(--accent)]/60 via-white/10 to-transparent" />
-
-          <span
-            className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/30"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            Scroll
-          </span>
-
-          <span className="mt-3 text-xl text-[var(--accent)]">
-            ↓
-          </span>
-
-        </div>
-      </aside>
-
-      {/* HERO */}
-      <main className="relative z-20 flex min-h-screen items-center px-8 pb-[230px] pt-[115px] lg:px-[11.5vw]">
+      {/* HERO CONTENT */}
+      <main className="relative z-20 flex min-h-screen items-center px-8 pb-[200px] pt-[115px] lg:px-[11.5vw]">
 
         <div className="w-full max-w-[780px]">
 
@@ -211,7 +175,7 @@ export default function Hero() {
           CURRENT SYSTEMS
       ========================================================== */}
 
-      <section className="absolute bottom-[58px] left-0 right-0 z-30 border-t border-white/[0.12] bg-[#020303]/85 px-6 py-5 backdrop-blur-md lg:px-[2vw]">
+      <section className="absolute bottom-0 left-0 right-0 z-30 border-t border-white/[0.12] bg-[#020303]/85 px-6 py-5 backdrop-blur-md lg:px-[2vw]">
 
         {/* SECTION HEADER */}
         <div className="mb-4 flex items-center gap-5">
@@ -234,7 +198,7 @@ export default function Hero() {
           {systems.map((system, index) => (
             <motion.a
               key={system.name}
-              href="#work"
+              href={system.href}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -287,28 +251,6 @@ export default function Hero() {
         </div>
 
       </section>
-
-      {/* =========================================================
-          BOTTOM STATUS BAR
-      ========================================================== */}
-
-      <footer className="absolute bottom-0 left-0 right-0 z-40 flex h-[58px] items-center justify-between border-t border-white/[0.1] bg-[#020303]/95 px-6 backdrop-blur-md lg:px-[2vw]">
-
-        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/40">
-          Delhi, India
-          <span className="mx-3 text-white/15">|</span>
-          UTC +05:30
-        </span>
-
-        <span className="hidden font-mono text-[11px] uppercase tracking-[0.12em] text-white/35 md:block">
-          Building / Auditing / Learning
-        </span>
-
-        <span className="font-mono text-[11px] text-white/35">
-          01 / 07
-        </span>
-
-      </footer>
 
     </section>
   );

@@ -1,5 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/hero/Hero";
+import Work from "@/components/Work";
+import SecurityLab from "@/components/SecurityLab";
+import StackAbout from "@/components/StackAbout";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -9,11 +14,11 @@ export default function Home() {
       <Navbar />
 
       <Hero />
-
-      <section id="work" className="min-h-screen" />
-      <section id="security" className="min-h-screen" />
-      <section id="stack" className="min-h-screen" />
-      <section id="about" className="min-h-screen" />
+      <Work />
+      <SecurityLab />
+      <StackAbout />
+      <Contact />
+      <Footer />
     </main>
   );
 }
