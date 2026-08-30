@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Map the next/font variables set on <html> onto Tailwind's font utilities,
+   so `font-sans` / `font-mono` resolve to Geist instead of the system stacks. */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 :root {
   --background: #050505;
   --foreground: #ededed;
@@ -20,7 +27,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 ::selection {

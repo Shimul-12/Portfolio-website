@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useEffect } from "react";
+import heroEarth from "@/public/images/hero-earth.png";
 
 export default function HeroBackground() {
   const mouseX = useMotionValue(0);
@@ -46,11 +48,14 @@ export default function HeroBackground() {
         }}
         className="absolute -inset-12"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-[center_right] bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/hero-earth.png')",
-          }}
+        <Image
+          src={heroEarth}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover object-right"
         />
       </motion.div>
 

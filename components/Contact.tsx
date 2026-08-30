@@ -29,12 +29,23 @@ const opportunities = [
   "Protocol development",
 ];
 
-const particles = Array.from({ length: 12 }, (_, i) => ({
-  id: i,
-  x: `${8 + Math.random() * 84}%`,
-  duration: `${10 + Math.random() * 15}s`,
-  delay: `${Math.random() * 10}s`,
-}));
+/* Fixed values, not Math.random() — these are rendered during SSR, so random
+   input would produce different markup on the server and the client and trip a
+   hydration mismatch. The spread below is hand-picked to look scattered. */
+const particles = [
+  { id: 0, x: "9%", duration: "13s", delay: "0s" },
+  { id: 1, x: "17%", duration: "19s", delay: "4.5s" },
+  { id: 2, x: "24%", duration: "11s", delay: "8s" },
+  { id: 3, x: "33%", duration: "22s", delay: "1.5s" },
+  { id: 4, x: "41%", duration: "15s", delay: "6s" },
+  { id: 5, x: "48%", duration: "24s", delay: "10.5s" },
+  { id: 6, x: "56%", duration: "12s", delay: "2.5s" },
+  { id: 7, x: "63%", duration: "20s", delay: "7.5s" },
+  { id: 8, x: "71%", duration: "17s", delay: "3s" },
+  { id: 9, x: "78%", duration: "23s", delay: "9s" },
+  { id: 10, x: "86%", duration: "14s", delay: "5s" },
+  { id: 11, x: "92%", duration: "21s", delay: "11.5s" },
+];
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);

@@ -51,12 +51,15 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#020303] text-white">
 
-      {/* BACKGROUND */}
-      <HeroBackground />
-      <NetworkOverlay />
+      {/* BACKGROUND — pinned to the first viewport so it doesn't stretch
+          behind the Current Systems strip once that strip flows on mobile */}
+      <div className="absolute inset-x-0 top-0 h-screen overflow-hidden lg:h-full">
+        <HeroBackground />
+        <NetworkOverlay />
+      </div>
 
       {/* HERO CONTENT */}
-      <main className="relative z-20 flex min-h-screen items-center px-8 pb-[200px] pt-[115px] lg:px-[11.5vw]">
+      <main className="relative z-20 flex min-h-screen items-center px-8 pb-24 pt-[115px] lg:px-[11.5vw] lg:pb-[200px]">
 
         <div className="w-full max-w-[780px]">
 
@@ -175,7 +178,7 @@ export default function Hero() {
           CURRENT SYSTEMS
       ========================================================== */}
 
-      <section className="absolute bottom-0 left-0 right-0 z-30 border-t border-white/[0.12] bg-[#020303]/85 px-6 py-5 backdrop-blur-md lg:px-[2vw]">
+      <section className="relative z-30 border-t border-white/[0.12] bg-[#020303] px-6 py-5 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:bg-[#020303]/85 lg:px-[2vw] lg:backdrop-blur-md">
 
         {/* SECTION HEADER */}
         <div className="mb-4 flex items-center gap-5">
