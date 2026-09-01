@@ -110,7 +110,7 @@ export default function Hero() {
               duration: 0.9,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="max-w-[780px] text-[clamp(4rem,5.4vw,6.4rem)] font-semibold uppercase leading-[0.91] tracking-[-0.06em]"
+            className="max-w-[780px] text-[clamp(3.3rem,5.4vw,6.4rem)] font-semibold uppercase leading-[0.91] tracking-[-0.04em]"
           >
             <span className="block text-white">
               Building Protocols
@@ -146,11 +146,11 @@ export default function Hero() {
               delay: 0.58,
               duration: 0.7,
             }}
-            className="mt-8 flex gap-3"
+            className="mt-8 flex flex-wrap gap-3"
           >
             <a
               href="#work"
-              className="group flex items-center gap-8 bg-[var(--accent)] px-8 py-4 font-mono text-[12px] font-medium uppercase tracking-[0.12em] text-black transition-all duration-300 hover:shadow-[0_0_35px_rgba(184,255,92,0.2)]"
+              className="group flex items-center gap-8 bg-[var(--accent)] px-8 py-4 font-mono text-[12px] font-semibold uppercase tracking-[0.12em] text-[#020303] transition-all duration-300 hover:shadow-[0_0_35px_rgba(184,255,92,0.2)]"
             >
               Explore Work
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -226,19 +226,19 @@ export default function Hero() {
 
                 </div>
 
-                <span className="font-mono text-[10px] font-medium uppercase tracking-wide text-[var(--accent)]">
+                <span className="font-mono text-[11px] font-medium uppercase tracking-wide text-[var(--accent)]">
                   ● {system.status}
                 </span>
 
               </div>
 
               {/* DESCRIPTION */}
-              <p className="font-mono text-[13px] font-medium text-white/65">
+              <p className="font-mono text-[13px] font-medium text-white/75">
                 {system.description}
               </p>
 
               {/* STACK */}
-              <p className="mt-2 font-mono text-[11px] leading-4 text-white/35">
+              <p className="mt-2 font-mono text-[12px] leading-5 text-white/55">
                 {system.stack}
               </p>
 

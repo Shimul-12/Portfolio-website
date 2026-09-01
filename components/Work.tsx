@@ -141,7 +141,7 @@ function ProjectCard({
                   {project.name}
                 </h3>
               </div>
-              <p className="font-mono text-[14px] text-white/45">
+              <p className="font-mono text-[14px] text-white/60">
                 {project.fullName}
               </p>
             </div>
@@ -158,12 +158,12 @@ function ProjectCard({
           </div>
 
           {/* Category */}
-          <span className="mb-5 inline-block border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35">
+          <span className="mb-5 inline-block border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-white/55">
             {project.category}
           </span>
 
           {/* Description */}
-          <p className="mb-6 max-w-[600px] font-mono text-[14px] leading-[1.8] text-white/50">
+          <p className="mb-6 max-w-[620px] font-mono text-[15px] leading-[1.8] text-white/68">
             {project.description}
           </p>
 
@@ -172,7 +172,7 @@ function ProjectCard({
             {project.stack.map((tech) => (
               <span
                 key={tech}
-                className="shimmer-hover border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 font-mono text-[11px] text-white/55 transition-colors duration-300 hover:border-[var(--accent)]/30 hover:text-white/75"
+                className="shimmer-hover border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 font-mono text-[12px] text-white/65 transition-colors duration-300 hover:border-[var(--accent)]/30 hover:text-white/85"
               >
                 {tech}
               </span>
@@ -184,7 +184,7 @@ function ProjectCard({
             href={project.source}
             target="_blank"
             rel="noreferrer"
-            className="group/link inline-flex items-center gap-4 border border-white/15 px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.12em] text-white/60 transition-all duration-300 hover:border-[var(--accent)]/50 hover:text-white hover:shadow-[0_0_25px_rgba(184,255,92,0.06)]"
+            className="group/link inline-flex items-center gap-4 border border-white/15 px-7 py-3.5 font-mono text-[12px] uppercase tracking-[0.12em] text-white/72 transition-all duration-300 hover:border-[var(--accent)]/50 hover:text-white hover:shadow-[0_0_25px_rgba(184,255,92,0.06)]"
           >
             View Source
             <span className="transition-transform duration-300 group-hover/link:translate-x-1.5">
@@ -204,7 +204,7 @@ function ProjectCard({
               {project.highlights.map((highlight, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rotate-45 border border-[var(--accent)]/60" />
-                  <span className="font-mono text-[12px] leading-[1.7] text-white/45">
+                  <span className="font-mono text-[13px] leading-[1.7] text-white/62">
                     {highlight}
                   </span>
                 </div>
@@ -219,8 +219,7 @@ function ProjectCard({
                 ⛨ Security
               </span>
             </span>
-            <p className="font-mono text-[12px] leading-[1.7] text-white/40">
-              {project.security}
+            <p className="font-mono text-[13px] leading-[1.7] text-white/58">
             </p>
           </div>
         </div>
@@ -267,7 +266,7 @@ export default function Work() {
             <span className="text-[var(--accent)]">.</span>
           </h2>
 
-          <p className="mt-5 max-w-[550px] font-mono text-[14px] leading-7 text-white/40">
+          <p className="mt-5 max-w-[580px] font-mono text-[15px] leading-7 text-white/58">
             Each project represents a real system — designed, built, tested,
             and open-sourced. Not mockups. Not tutorials. Working contracts.
           </p>

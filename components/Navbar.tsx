@@ -8,6 +8,7 @@ const links = [
   { label: "Security", href: "#security" },
   { label: "Stack", href: "#stack" },
   { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {

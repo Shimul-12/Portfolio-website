@@ -103,7 +103,7 @@ function HighlightedCode({ code }: { code: string }) {
   const highlighted = code
     .split("\n")
     .map((line, i) => {
-      let processed = line;
+      const processed = line;
 
       // Comments — green
       if (processed.trimStart().startsWith("//")) {
