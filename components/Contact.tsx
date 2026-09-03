@@ -1,25 +1,30 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useCallback } from "react";
 
 const contactLinks = [
   {
     label: "GitHub",
     href: "https://github.com/Shimul-12",
     external: true,
+    action: "link",
   },
   {
     label: "X / Twitter",
     href: "https://x.com/0xShimul",
     external: true,
+    action: "link",
   },
   {
-    label: "Email",
+    label: "Copy Email",
     href: "mailto:ShimulSharma12345@gmail.com",
     external: false,
+    action: "copy",
   },
 ];
+
+const EMAIL = "ShimulSharma12345@gmail.com";
 
 const opportunities = [
   "Blockchain engineering",
@@ -50,6 +55,14 @@ const particles = [
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [showToast, setShowToast] = useState(false);
+
+  const copyEmail = useCallback(() => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2500);
+    });
+  }, []);
 
   return (
     <section
@@ -121,32 +134,78 @@ export default function Contact() {
 
         {/* CTA buttons — larger and more dramatic */}
         <div className="mt-14 flex flex-wrap gap-4">
-          {contactLinks.map((link, index) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noreferrer" : undefined}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                delay: 0.25 + index * 0.1,
-                duration: 0.5,
-              }}
-              className={`group flex items-center gap-6 px-10 py-5 font-mono text-[13px] uppercase tracking-[0.12em] transition-all duration-400 ${
-                index === 0
-                  ? "bg-[var(--accent)] text-black font-semibold hover:shadow-[0_0_50px_rgba(184,255,92,0.2)] hover:scale-[1.02]"
-                  : "border border-white/15 text-white/55 hover:border-white/35 hover:text-white hover:bg-white/[0.03] hover:scale-[1.02]"
-              }`}
-            >
-              {link.label}
-              <span className="transition-transform duration-300 group-hover:translate-x-1.5">
-                ↗
-              </span>
-            </motion.a>
-          ))}
+          {contactLinks.map((link, index) => {
+            const isCopy = link.action === "copy";
+
+            if (isCopy) {
+              return (
+                <motion.button
+                  key={link.label}
+                  type="button"
+                  onClick={copyEmail}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    delay: 0.25 + index * 0.1,
+                    duration: 0.5,
+                  }}
+                  className="btn-pop group flex items-center gap-6 border border-white/15 px-10 py-5 font-mono text-[13px] uppercase tracking-[0.12em] text-white/55 hover:border-white/35 hover:text-white hover:bg-white/[0.03] cursor-pointer"
+                >
+                  {link.label}
+                  <span className="text-[14px] transition-transform duration-300 group-hover:scale-110">
+                    ⎘
+                  </span>
+                </motion.button>
+              );
+            }
+
+            return (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noreferrer" : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  delay: 0.25 + index * 0.1,
+                  duration: 0.5,
+                }}
+                className={`btn-pop group flex items-center gap-6 px-10 py-5 font-mono text-[13px] uppercase tracking-[0.12em] ${
+                  index === 0
+                    ? "bg-[var(--accent)] !text-black !font-bold hover:shadow-[0_0_50px_rgba(184,255,92,0.2)]"
+                    : "border border-white/15 text-white/55 hover:border-white/35 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                {link.label}
+                <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                  ↗
+                </span>
+              </motion.a>
+            );
+          })}
         </div>
       </motion.div>
+
+      {/* Toast notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-8 left-1/2 z-[200] -translate-x-1/2"
+          >
+            <div className="glass-card flex items-center gap-3 border-[var(--accent)]/30 px-6 py-3.5 shadow-[0_0_30px_rgba(184,255,92,0.08)]">
+              <span className="text-[var(--accent)]">✓</span>
+              <span className="font-mono text-[12px] tracking-[0.06em] text-white/70">
+                Email copied to clipboard
+              </span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

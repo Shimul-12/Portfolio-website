@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const links = [
+const navLinks = [
   { label: "Work", href: "#work" },
   { label: "Security", href: "#security" },
   { label: "Stack", href: "#stack" },
@@ -56,15 +56,26 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden items-center gap-8 md:flex">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-xs uppercase tracking-[0.18em] text-white/45 transition-colors duration-300 hover:text-white"
+                className="nav-pop text-xs uppercase tracking-[0.18em] text-white/45"
               >
                 {link.label}
               </a>
             ))}
+
+            {/* Resume download */}
+            <a
+              href="/shimul-sharma-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-pop flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] text-white/45 hover:text-[var(--accent)]"
+            >
+              Resume
+              <span className="text-[10px]">↓</span>
+            </a>
           </div>
 
           {/* Desktop GitHub */}
@@ -72,7 +83,7 @@ export default function Navbar() {
             href="https://github.com/Shimul-12"
             target="_blank"
             rel="noreferrer"
-            className="group hidden items-center gap-2 text-xs uppercase tracking-[0.15em] md:flex"
+            className="nav-pop group hidden items-center gap-2 text-xs uppercase tracking-[0.15em] md:flex"
           >
             <span className="text-white/50 transition-colors group-hover:text-white">
               GitHub
@@ -114,7 +125,7 @@ export default function Navbar() {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#020303]/98 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col items-center gap-8">
-              {links.map((link, index) => (
+              {navLinks.map((link, index) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
@@ -147,6 +158,19 @@ export default function Navbar() {
                 className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--accent)] transition-colors"
               >
                 GitHub ↗
+              </motion.a>
+
+              <motion.a
+                href="/shimul-sharma-resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: 0.35, duration: 0.3 }}
+                className="font-mono text-sm uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white"
+              >
+                Resume ↓
               </motion.a>
             </nav>
           </motion.div>

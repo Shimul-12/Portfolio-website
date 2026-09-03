@@ -370,7 +370,7 @@ export default function SecurityLab() {
             href="https://github.com/Shimul-12/Security-Portfolio"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-3 border border-red-500/20 bg-red-500/[0.03] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.14em] text-white/50 transition-all duration-300 hover:border-red-500/40 hover:text-white hover:shadow-[0_0_30px_rgba(255,60,60,0.06)]"
+            className="btn-pop group inline-flex items-center gap-3 border border-red-500/20 bg-red-500/[0.03] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.14em] text-white/50 hover:border-red-500/40 hover:text-white hover:shadow-[0_0_30px_rgba(255,60,60,0.06)]"
           >
             View Full Security Portfolio
             <span className="transition-transform duration-300 group-hover:translate-x-1">

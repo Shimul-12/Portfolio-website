@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import Entrance from "@/components/Entrance";
 import Footer from "@/components/Footer";
 import Hero from "@/components/hero/Hero";
+import Metrics from "@/components/Metrics";
 import Navbar from "@/components/Navbar";
 import SecurityLab from "@/components/SecurityLab";
 import StackAbout from "@/components/StackAbout";
@@ -21,7 +22,7 @@ export default function PortfolioExperience() {
     ).matches;
 
     const entranceSeen =
-      window.sessionStorage.getItem(ENTRANCE_STORAGE_KEY) === "true";
+      window.localStorage.getItem(ENTRANCE_STORAGE_KEY) === "true";
 
     if (reduceMotion || entranceSeen) {
       setShowEntrance(false);
@@ -29,7 +30,7 @@ export default function PortfolioExperience() {
   }, []);
 
   const completeEntrance = useCallback(() => {
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       ENTRANCE_STORAGE_KEY,
       "true",
     );
@@ -55,6 +56,8 @@ export default function PortfolioExperience() {
         <Navbar />
 
         <Hero />
+
+        <Metrics />
 
         <Work />
 

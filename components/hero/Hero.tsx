@@ -150,7 +150,7 @@ export default function Hero() {
           >
             <a
               href="#work"
-              className="group flex items-center gap-8 bg-[var(--accent)] px-8 py-4 font-mono text-[12px] font-semibold uppercase tracking-[0.12em] text-[#020303] transition-all duration-300 hover:shadow-[0_0_35px_rgba(184,255,92,0.2)]"
+              className="btn-pop group flex items-center gap-8 bg-[var(--accent)] px-8 py-4 font-mono text-[12px] !font-bold uppercase tracking-[0.12em] !text-black hover:shadow-[0_0_35px_rgba(184,255,92,0.2)]"
             >
               Explore Work
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -162,11 +162,23 @@ export default function Hero() {
               href="https://github.com/Shimul-12"
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-7 border border-white/20 px-8 py-4 font-mono text-[12px] uppercase tracking-[0.12em] text-white/70 transition-all duration-300 hover:border-white/50 hover:text-white"
+              className="btn-pop group flex items-center gap-7 border border-white/30 px-8 py-4 font-mono text-[12px] font-medium uppercase tracking-[0.12em] text-white/90 hover:border-white/50 hover:text-white"
             >
               GitHub
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 ↗
+              </span>
+            </a>
+
+            <a
+              href="/shimul-sharma-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-pop group flex items-center gap-7 border border-white/15 px-8 py-4 font-mono text-[12px] uppercase tracking-[0.12em] text-white/50 hover:border-[var(--accent)]/40 hover:text-white/80"
+            >
+              Download CV
+              <span className="transition-transform duration-300 group-hover:translate-y-0.5">
+                ↓
               </span>
             </a>
           </motion.div>
