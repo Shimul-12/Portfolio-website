@@ -11,8 +11,6 @@ import SecurityLab from "@/components/SecurityLab";
 import StackAbout from "@/components/StackAbout";
 import Work from "@/components/Work";
 
-const ENTRANCE_STORAGE_KEY = "shimul-portfolio-entrance-seen";
-
 export default function PortfolioExperience() {
   const [showEntrance, setShowEntrance] = useState(true);
 
@@ -21,20 +19,12 @@ export default function PortfolioExperience() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const entranceSeen =
-      window.localStorage.getItem(ENTRANCE_STORAGE_KEY) === "true";
-
-    if (reduceMotion || entranceSeen) {
+    if (reduceMotion) {
       setShowEntrance(false);
     }
   }, []);
 
   const completeEntrance = useCallback(() => {
-    window.localStorage.setItem(
-      ENTRANCE_STORAGE_KEY,
-      "true",
-    );
-
     setShowEntrance(false);
   }, []);
 
